@@ -27,6 +27,11 @@ import { AppComponent } from './app.component';
 import { RoutingModule } from './app-routing.module';
 import { InvalidEmailModalComponent } from './contacts/shared';
 import { InvalidPhoneNumberModalComponent } from './contacts/shared';
+import { PreferencesService} from "./contacts/shared/services/preferences.service";
+import {BrowserStorage} from "./contacts/shared/services/BrowserStorage";
+import {PreferencesAsyncService} from "./contacts/shared/services/preferences-async.service";
+import {HttpClientModule} from "@angular/common/http";
+import {MatDialogModule} from "@angular/material/dialog";
 
 @NgModule({
   declarations: [
@@ -54,13 +59,17 @@ import { InvalidPhoneNumberModalComponent } from './contacts/shared';
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
-    HttpModule,
+    HttpClientModule,
     InMemoryWebApiModule.forRoot(InMemoryDataService, { dataEncapsulation: true }),
+    MatDialogModule,
     RoutingModule
   ],
   providers: [
     ContactService,
     ContactFeedService,
+    BrowserStorage,
+    PreferencesService,
+    PreferencesAsyncService
   ],
   bootstrap: [AppComponent]
 })

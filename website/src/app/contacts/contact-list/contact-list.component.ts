@@ -83,7 +83,7 @@ export class ContactListComponent implements OnInit {
     this.isLoading = true;
 
     this.contactService.getContacts()
-      .then(contacts => {
+      .subscribe(contacts => {
         this.isLoading = false;
         this.deletingContacts = false;
         this.contacts = contacts;
